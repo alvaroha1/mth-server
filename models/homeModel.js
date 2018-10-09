@@ -47,7 +47,7 @@ const homeSchema = new mongoose.Schema({
     required: true,
   },
   pricePerSquareMeter: {
-    type: String,
+    type: Number,
     required: true,
   },
 });
