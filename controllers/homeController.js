@@ -24,5 +24,5 @@ exports.getAllHomes = async (req, res) => {
     averagePricePerSquareMeter: avgM2Price,
     homesList: allHomesFormatted,
   };
-  res.json(allHomes);
+  res.json(response);
 };
