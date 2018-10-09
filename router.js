@@ -1,7 +1,7 @@
 const router = require('express').Router();
-const controller = require('./controller');
+const homeController = require('./controllers/homeController');
 
 router
-  .get('/pokemons', controller.getAllPokemons)
+  .get('/homes', homeController.getAllHomes);
 
 module.exports = router;
