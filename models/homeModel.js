@@ -30,15 +30,15 @@ const homeSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  pricePerSquareMeter: {
+    type: Number,
+    required: true,
+  },
   estimatedPrice: {
     type: Number,
     required: true,
   },
   estimatedPricePercentageDifference: {
-    type: Number,
-    required: true,
-  },
-  pricePerSquareMeter: {
     type: Number,
     required: true,
   },
