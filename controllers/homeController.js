@@ -9,13 +9,11 @@ exports.getAllHomes = async (req, res) => {
     formattedObj.thumbnail = obj.thumbnail;
     formattedObj.price = obj.price;
     formattedObj.size = obj.size;
-    formattedObj.province = obj.province;
-    formattedObj.municipality = obj.municipality;
     formattedObj.country = obj.country;
     formattedObj.latitude = obj.latitude;
     formattedObj.longitude = obj.longitude;
     formattedObj.url = obj.url;
-    formattedObj.pricePerSquareMeter = obj.priceByArea;
+    formattedObj.pricePerSquareMeter = obj.pricePerSquareMeter;
     formattedObj.estimatedPrice = obj.estimatedPrice;
     formattedObj.estimatedPricePercentageDifference = obj.estimatedPricePercentageDifference;
     return formattedObj;

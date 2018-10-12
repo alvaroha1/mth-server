@@ -14,14 +14,6 @@ const homeSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  province: {
-    type: String,
-    required: true,
-  },
-  municipality: {
-    type: String,
-    required: true,
-  },
   country: {
     type: String,
     required: true,
@@ -38,15 +30,15 @@ const homeSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  pricePerSquareMeter: {
+    type: Number,
+    required: true,
+  },
   estimatedPrice: {
     type: Number,
     required: true,
   },
   estimatedPricePercentageDifference: {
-    type: Number,
-    required: true,
-  },
-  pricePerSquareMeter: {
     type: Number,
     required: true,
   },
