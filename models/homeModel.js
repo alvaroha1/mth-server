@@ -14,14 +14,6 @@ const homeSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  province: {
-    type: String,
-    required: true,
-  },
-  municipality: {
-    type: String,
-    required: true,
-  },
   country: {
     type: String,
     required: true,
