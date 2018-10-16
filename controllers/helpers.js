@@ -1,13 +1,8 @@
-module.exports.avgCalc = function avgCalc(homesArray) {
-  const m2PriceArray = homesArray
-  .map(obj => obj.pricePerSquareMeter)
-  .filter(el => Number.isFinite(el));
-return m2PriceArray.reduce((a, b) => a + b) / m2PriceArray.length;
-};
 
 module.exports.creatingFilter = function creatingFilter(req) {
   const filter = {};
-  // if (req.query.country) filter.country = req.query.country; //DONT REMOVE
+  if (req.query.country) filter.country = req.query.country;
+  if (req.query.city) filter.city = req.query.city; 
   if (req.query.price) filter.price = { 
     $gte: req.query.price[0],
     $lte: req.query.price[1],
@@ -16,12 +11,25 @@ module.exports.creatingFilter = function creatingFilter(req) {
     $gte: req.query.size[0], 
     $lte: req.query.size[1],
   };
-  // if (req.query.estimatedPricePercentageDifference) filter.estimatedPricePercentageDifference = { //DONT REMOVE
-  // $gte: req.query.discount
-  // };
-  // if (req.query.estimatedPrice) filter.estimatedPrice = {  //DONT REMOVE
-  //   $gte: req.query.estimatedPrice[0],
-  //   $lte: req.query.estimatedPrice[1],
-  // };
+  if (req.query.estimatedPricePercentageDifference) filter.estimatedPricePercentageDifference = { 
+    $gte: req.query.estimatedPricePercentageDifference,
+  };
+  if (req.query.estimatedPrice) filter.estimatedPrice = { 
+    $gte: req.query.estimatedPrice[0],
+    $lte: req.query.estimatedPrice[1],
+  };
   return filter;
 } 
+
+module.exports.avgCalc = function avgCalc(homesArray) {
+  let len = 0;
+  return homesArray
+    .reduce((acc, el) => {
+      const { pricePerSquareMeter: sub } = el;
+      if (Number.isFinite(sub)) {
+        len += 1;
+        return acc + sub;
+      }
+      return acc;
+    }, 0) / len;
+};
