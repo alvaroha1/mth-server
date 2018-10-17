@@ -2,14 +2,15 @@ const Home = require('../models/homeModel');
 const { avgCalc, createFilter } = require('./helpers');
 
 const homesPerPage = 20;
-const pageNumber = 3;
-const reqLatitude = 44.427967;
-const reqLongitude = 8.849993;
-const reqRadius = 10000;
 
 exports.getAllHomes = async (req, res) => {
-  const queryFilter = createFilter(req);
-  const allHomes = await Home.find(queryFilter);
+  const allHomes = await Home.find(createFilter(req));
+  const centerLatitude = parseFloat(req.query.centerLatitude, 10);
+  const centerLongitude = parseFloat(req.query.centerLongitude, 10);
+  const radius = parseInt(req.query.radius, 10);
+  const totalPages = Math.ceil(allHomes.length / homesPerPage);
+  const page = parseInt(req.query.page, 10);
+  const pageNumber = (page > 0 && page <= totalPages) ? page : 1;
   const start = homesPerPage * (pageNumber - 1);
   const end = homesPerPage * pageNumber - 1;
   const responseHomes = allHomes.slice(start, end);
@@ -30,11 +31,11 @@ exports.getAllHomes = async (req, res) => {
     return formattedObj;
   });
   const response = {
-    centerLatitude: reqLatitude,
-    centerLongitude: reqLongitude,
-    radius: reqRadius,
+    centerLatitude,
+    centerLongitude,
+    radius,
     page: pageNumber,
-    totalPages: Math.ceil(allHomes.length / homesPerPage),
+    totalPages,
     totalResults: allHomes.length,
     averagePricePerSquareMeter: avgM2Price,
     homesList: allHomesFormatted,
