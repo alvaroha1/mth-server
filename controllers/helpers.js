@@ -1,14 +1,26 @@
 module.exports.createFilter = function createFilter(queryObj) {
-  const filter = {};
   const {
     country,
     city,
     price,
     size,
     estimatedPricePercentageDifference,
+    centerLongitude,
+    centerLatitude,
+    radius,
   } = queryObj;
+  const filter = {};
   if (city) filter.city = city;
-  else if (country) filter.country = country;
+  if (country) filter.country = country;
+  if (radius && centerLongitude && centerLatitude) {
+    filter.loc = {
+      $near: {
+        $geometry: { type: 'Point', coordinates: [centerLongitude, centerLatitude] },
+        $minDistance: 0,
+        $maxDistance: radius,
+      },
+    };
+  }
   if (price) filter.price = { $gte: price[0], $lte: price[1] };
   if (size) filter.size = { $gte: size[0], $lte: size[1] };
   if (estimatedPricePercentageDifference) {

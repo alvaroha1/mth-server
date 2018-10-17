@@ -14,7 +14,6 @@ exports.getAllHomes = async (req, res) => {
   const totalPages = Math.ceil(allHomes.length / homesPerPage);
   const page = (queryObj.page > 0 && queryObj.page <= totalPages) ? queryObj.page : 1;
   const responseHomes = allHomes.slice(homesPerPage * (page - 1), homesPerPage * page - 1);
-
   const response = {
     centerLatitude: queryObj.centerLatitude,
     centerLongitude: queryObj.centerLongitude,
