@@ -10,6 +10,7 @@ exports.getAllHomes = async (req, res) => {
     formattedObj.price = obj.price;
     formattedObj.size = obj.size;
     formattedObj.country = obj.country;
+    formattedObj.city = obj.city;
     formattedObj.latitude = obj.latitude;
     formattedObj.longitude = obj.longitude;
     formattedObj.url = obj.url;
