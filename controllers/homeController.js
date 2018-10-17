@@ -1,8 +1,9 @@
 const Home = require('../models/homeModel');
-const { avgCalc, creatingFilter } = require('./helpers');
+const { avgCalc, createFilter } = require('./helpers');
 
 exports.getAllHomes = async (req, res) => {
-  const allHomes = await Home.find(creatingFilter(req));
+  const queryFilter = createFilter(req);
+  const allHomes = await Home.find(queryFilter);
   const avgM2Price = avgCalc(allHomes);
   const allHomesFormatted = allHomes.map((obj) => {
     const formattedObj = {};
