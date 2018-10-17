@@ -1,25 +1,26 @@
 
 module.exports.creatingFilter = function creatingFilter(req) {
   const filter = {};
-  if (req.query.country) filter.country = req.query.country;
-  if (req.query.city) filter.city = req.query.city; 
-  if (req.query.price) filter.price = { 
-    $gte: req.query.price[0],
-    $lte: req.query.price[1],
-  };
-  if (req.query.size) filter.size = { 
-    $gte: req.query.size[0], 
-    $lte: req.query.size[1],
-  };
-  if (req.query.estimatedPricePercentageDifference) filter.estimatedPricePercentageDifference = { 
-    $gte: req.query.estimatedPricePercentageDifference,
-  };
-  if (req.query.estimatedPrice) filter.estimatedPrice = { 
-    $gte: req.query.estimatedPrice[0],
-    $lte: req.query.estimatedPrice[1],
-  };
+  const {
+    country,
+    city,
+    price,
+    size,
+    estimatedPricePercentageDifference,
+    estimatedPrice,
+  } = req.query;
+  if (country) filter.country = country;
+  if (city) filter.city = city;
+  if (price) filter.price = { $gte: price[0], $lte: price[1] };
+  if (size) filter.size = { $gte: size[0], $lte: size[1] };
+  if (estimatedPrice) filter.estimatedPrice = { $gte: estimatedPrice[0], $lte: estimatedPrice[1] };
+  if (estimatedPricePercentageDifference) {
+    filter.estimatedPricePercentageDifference = {
+      $gte: estimatedPricePercentageDifference,
+    };
+  }
   return filter;
-} 
+};
 
 module.exports.avgCalc = function avgCalc(homesArray) {
   let len = 0;
