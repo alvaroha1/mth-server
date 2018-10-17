@@ -3,6 +3,9 @@ const { avgCalc, createFilter } = require('./helpers');
 
 const homesPerPage = 20;
 const pageNumber = 3;
+const reqLatitude = 44.427967;
+const reqLongitude = 8.849993;
+const reqRadius = 10000;
 
 exports.getAllHomes = async (req, res) => {
   const queryFilter = createFilter(req);
@@ -27,9 +30,9 @@ exports.getAllHomes = async (req, res) => {
     return formattedObj;
   });
   const response = {
-    centerLatitude: 44.427967,
-    centerLongitude: 8.849993,
-    radius: 10000,
+    centerLatitude: reqLatitude,
+    centerLongitude: reqLongitude,
+    radius: reqRadius,
     page: pageNumber,
     totalPages: Math.ceil(allHomes.length / homesPerPage),
     totalResults: allHomes.length,
