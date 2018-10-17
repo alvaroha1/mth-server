@@ -1,28 +1,28 @@
 const Home = require('../models/homeModel');
-const { avgCalc, createFilter } = require('./helpers');
+const {
+  avgCalc,
+  createFilter,
+  formatHomes,
+  processQuery,
+} = require('./helpers');
+
+const homesPerPage = 20;
 
 exports.getAllHomes = async (req, res) => {
-  const queryFilter = createFilter(req);
-  const allHomes = await Home.find(queryFilter);
-  const avgM2Price = avgCalc(allHomes);
-  const allHomesFormatted = allHomes.map((obj) => {
-    const formattedObj = {};
-    formattedObj.thumbnail = obj.thumbnail;
-    formattedObj.price = obj.price;
-    formattedObj.size = obj.size;
-    formattedObj.country = obj.country;
-    formattedObj.city = obj.city;
-    formattedObj.latitude = obj.latitude;
-    formattedObj.longitude = obj.longitude;
-    formattedObj.url = obj.url;
-    formattedObj.pricePerSquareMeter = obj.pricePerSquareMeter;
-    formattedObj.estimatedPrice = obj.estimatedPrice;
-    formattedObj.estimatedPricePercentageDifference = obj.estimatedPricePercentageDifference;
-    return formattedObj;
-  });
+  const queryObj = processQuery(req.query);
+  const allHomes = await Home.find(createFilter(queryObj));
+  const totalPages = Math.ceil(allHomes.length / homesPerPage);
+  const page = (queryObj.page > 0 && queryObj.page <= totalPages) ? queryObj.page : 1;
+  const responseHomes = allHomes.slice(homesPerPage * (page - 1), homesPerPage * page - 1);
   const response = {
-    averagePricePerSquareMeter: avgM2Price,
-    homesList: allHomesFormatted,
+    centerLatitude: queryObj.centerLatitude,
+    centerLongitude: queryObj.centerLongitude,
+    radius: queryObj.radius,
+    page,
+    totalPages,
+    totalResults: allHomes.length,
+    averagePricePerSquareMeter: avgCalc(allHomes),
+    homesList: formatHomes(responseHomes),
   };
   res.json(response);
 };
