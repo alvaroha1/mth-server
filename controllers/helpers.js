@@ -22,7 +22,7 @@ module.exports.createFilter = function createFilter(req) {
 
 module.exports.avgCalc = function avgCalc(homesArray) {
   let len = 0;
-  return homesArray
+  const average = homesArray
     .reduce((acc, el) => {
       const { pricePerSquareMeter: sub } = el;
       if (Number.isFinite(sub)) {
@@ -31,4 +31,5 @@ module.exports.avgCalc = function avgCalc(homesArray) {
       }
       return acc;
     }, 0) / len;
+  return Math.round(average);
 };
