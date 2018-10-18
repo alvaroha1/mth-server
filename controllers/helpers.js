@@ -70,7 +70,6 @@ module.exports.processQuery = function processQuery(queryObj) {
   processedObj.size = queryObj.size.map(string => parseInt(string, 10));
   processedObj.country = queryObj.country;
   processedObj.city = queryObj.city;
-  processedObj.estimatedPrice = queryObj.estimatedPrice.map(string => parseInt(string, 10));
   processedObj.page = parseInt(queryObj.page, 10);
   processedObj.centerLongitude = parseFloat(queryObj.centerLongitude, 10);
   processedObj.centerLatitude = parseFloat(queryObj.centerLatitude, 10);
