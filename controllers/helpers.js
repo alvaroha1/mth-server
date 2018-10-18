@@ -25,7 +25,8 @@ module.exports.createFilter = function createFilter(queryObj) {
   if (size) filter.size = { $gte: size[0], $lte: size[1] };
   if (estimatedPricePercentageDifference) {
     filter.estimatedPricePercentageDifference = {
-      $lte: estimatedPricePercentageDifference,
+      $gte: estimatedPricePercentageDifference[0],
+      $lte: estimatedPricePercentageDifference[1],
     };
   }
   return filter;
@@ -65,7 +66,7 @@ module.exports.formatHomes = function formatHomes(homesArray) {
 
 module.exports.processQuery = function processQuery(queryObj) {
   const processedObj = {};
-  processedObj.estimatedPricePercentageDifference = parseInt(queryObj.estimatedPricePercentageDifference, 10);
+  processedObj.estimatedPricePercentageDifference = queryObj.estimatedPricePercentageDifference.map(string => parseInt(string, 10));
   processedObj.price = queryObj.price.map(string => parseInt(string, 10));
   processedObj.size = queryObj.size.map(string => parseInt(string, 10));
   processedObj.country = queryObj.country;
