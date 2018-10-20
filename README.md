@@ -34,9 +34,24 @@ $ npm install
 ```
 3. Start MongoDB in your system.
 
-4. Run the server to fetch data from the APIs
+4. Run the server 
 ```
 $ npm start
 ```
 
-This will fetch the latest data from the APIs and store them in a MongoDB database in your computer.
+Now you will have the server running using your port 3001.
+
+## Additional Features that might be implemented on a later date
+* Tests
+* User Management system
+* More relevant metrics
+* Other APIs
+
+## Contributing
+Contributions Welcome!
+
+This is an on-going project and external input and ideas will be gladly recieved!
+
+## License
+This project is licensed under the MIT License, play around, have fun.
+
