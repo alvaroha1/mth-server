@@ -22,8 +22,8 @@ Our client features a filter, a map and different metrics to help the user in th
 1. Clone the repo
 
 ```
-$ git clone https://github.com/alvaroha1/mth-api.git
-$ cd mth-api
+$ git clone https://github.com/alvaroha1/mth-server.git
+$ cd mth-server
 ```
 
 2. Install dependencies
