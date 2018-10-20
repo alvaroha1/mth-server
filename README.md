@@ -1,4 +1,4 @@
-# mth-server
+# MTH Server
 
 # MTH
 Project created from scratch with [Pedro Tas Schindler]( https://github.com/ps3611) and [Steven van Asbeck]( https://github.com/stevenspyramid).
