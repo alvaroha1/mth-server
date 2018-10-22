@@ -7,7 +7,7 @@ You will need to run the [MTH Client]( https://github.com/alvaroha1/mth-client),
 * [Tech Stack](#tech-stack)
 * [Screenshots](#screenshots)
 * [Getting started](#getting-started)
-* [Additional Features that might be implemented on a later date](#Additional-Features-that-might-be-implemented-on-a-later-date)
+* [Additional Features that might be implemented on a later date](#additional-features-that-might-be-implemented-on-a-later-date)
 * [Authors](#authors)
 * [License](#license)
 
@@ -17,8 +17,8 @@ With MTH we wanted to create a platform to aggregate all the data and provide a 
 Our client features a filter, a map and different metrics to help the user in their purchase decision.
 
 ## Tech Stack
-* [Express](https://github.com/koajs/koa) - web framework for Node.js.
-* [Mongodb](https://github.com/mongodb/mongo) - No relational database.
+* [Express,js](https://github.com/koajs/koa) - web framework for Node.js.
+* [MongoDB](https://github.com/mongodb/mongo) - No relational database.
 * [Mongoose](https://github.com/Automattic/mongoose) - Layer for mongodb.
 
 ## Screenshots
