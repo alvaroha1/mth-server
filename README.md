@@ -17,9 +17,9 @@ With MTH we wanted to create a platform to aggregate all the data and provide a 
 Our client features a filter, a map and different metrics to help the user in their purchase decision.
 
 ## Tech Stack
-* Express
-* MongoDB
-* Mongoose
+* [Express](https://github.com/koajs/koa) - web framework for Node.js.
+* [Mongodb](https://github.com/mongodb/mongo) - No relational database.
+* [Mongoose](https://github.com/Automattic/mongoose) - Layer for mongodb.
 
 ## Screenshots
 ![login](https://github.com/alvaroha1/find-a-hobby-client/blob/master/assets/sc0.png)
